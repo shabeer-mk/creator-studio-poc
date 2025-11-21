@@ -2,7 +2,7 @@
 streamlit
 
 # Audio enhancement API
-cleanvoice
+cleanvoice-sdk
 
 # OpenAI API for Whisper (speech-to-text) and GPT (emotion detection)
 openai
@@ -22,3 +22,4 @@ python-dotenv
 # (Optional: Only if you need advanced audio file handling)
 # soundfile
 # scipy
+
