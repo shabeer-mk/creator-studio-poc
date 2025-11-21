@@ -71,6 +71,11 @@ def save_file(uploaded_file):
 
 def cleanvoice_enhance(local_path, output_path):
     with st.spinner("1️⃣ Enhancing audio with Cleanvoice AI..."):
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_path)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+
         result = cv.process(local_path, {
             'fillers': True,
             'long_silences': True,
@@ -191,6 +196,8 @@ if process_btn and upload:
             sfx = sfx.fade_out(100)  # only fade out
             mixed_audio = mixed_audio.overlay(sfx, position=pos)
 
+    # Ensure temp directory exists
+    os.makedirs("temp", exist_ok=True)
     temp_path = "temp/mixed_with_sfx.mp3" if sfx_sounds_opt else "temp/mixed_no_sfx.mp3"
     mixed_audio.export(temp_path, format="mp3")
 
